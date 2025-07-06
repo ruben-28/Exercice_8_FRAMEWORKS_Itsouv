@@ -1,32 +1,14 @@
 package com.example.sortingClean;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import java.util.Random;
 
-/**
- * Runs several sorting algorithms on the same randomly created array. All
- * algorithms are injected using CDI so they can be easily replaced or
- * produced in different ways.
- */
-@ApplicationScoped
+// TODO: Add dependency injection and annotations to this file
 public class AlgorithmRunner {
+    SortingAlgorithm<Integer> quadraticAlgorithm = new BubbleSort();
+    SortingAlgorithm<Integer> nlognAlgorithm = new QuickSort();
+    SortingAlgorithm<Integer> randomAlgorithm1 = makeRandomSortingAlgorithm();
+    SortingAlgorithm<Integer> randomAlgorithm2 = makeRandomSortingAlgorithm();
 
-    @Inject
-    @Quadratic
-    SortingAlgorithm<Integer> quadraticAlgorithm;
-
-    @Inject
-    @Nlogn
-    SortingAlgorithm<Integer> nlognAlgorithm;
-
-    @Inject
-    @Random1
-    SortingAlgorithm<Integer> randomAlgorithm1;
-
-    @Inject
-    @Random2
-    SortingAlgorithm<Integer> randomAlgorithm2;
     int numberOfElements = 10000;
     public void runAlgorithms(){
         Random rand = new Random();
@@ -45,6 +27,20 @@ public class AlgorithmRunner {
         randomAlgorithm2.sort(intsClone);
     }
 
-    // Algorithms are provided by CDI producers so there is no need for this
-    // class to create them manually.
+
+    private static SortingAlgorithm<Integer> makeRandomSortingAlgorithm(){
+        Random random = new Random(System.currentTimeMillis());
+        SortingAlgorithm<Integer> sortAlg= null;
+        switch (random.nextInt(4)){
+            case 0: sortAlg = new QuickSort();
+                break;
+            case 1: sortAlg = new MergeSort();
+                break;
+            case 2: sortAlg = new BubbleSort();
+                break;
+            case 3: sortAlg = new InsertionSort();
+        }
+        return sortAlg;
+    }
+
 }
