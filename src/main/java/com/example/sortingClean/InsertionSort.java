@@ -1,4 +1,4 @@
-package sortingClean;
+package com.example.sortingClean;
 
 public class InsertionSort implements SortingAlgorithm {
     public void sort(Comparable[] array) {
