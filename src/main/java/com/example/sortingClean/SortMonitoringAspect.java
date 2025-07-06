@@ -1,4 +1,4 @@
-package sortingClean;
+package com.example.sortingClean;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -6,13 +6,14 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.LinkedHashMap;
 
 @Aspect
 public class SortMonitoringAspect {
-    private static final Map<String, Long> totalTimes = new HashMap<>();
-    private static final Map<String, Integer> callCounts = new HashMap<>();
+    // Use LinkedHashMap to preserve the order in which algorithms are first seen
+    private static final Map<String, Long> totalTimes = new LinkedHashMap<>();
+    private static final Map<String, Integer> callCounts = new LinkedHashMap<>();
     private static long globalTime = 0;
 
     private static final ThreadLocal<Long> startTime = new ThreadLocal<>();
@@ -34,7 +35,7 @@ public class SortMonitoringAspect {
         globalTime += duration;
     }
 
-    @After("execution(* sortingClean.AlgorithmRunner.runAlgorithms(..))")
+    @After("execution(* com.example.sortingClean.AlgorithmRunner.runAlgorithms(..))")
     public void afterAll() {
         System.out.println("Total time of running all sort functions was " + globalTime + " ms");
         System.out.println("In detail:");

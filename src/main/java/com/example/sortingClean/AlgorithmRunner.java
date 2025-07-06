@@ -1,7 +1,7 @@
-package sortingClean;
+package com.example.sortingClean;
+
 import java.util.Random;
 
-// TODO: Add dependency injection and annotations to this file
 public class AlgorithmRunner {
     SortingAlgorithm<Integer> quadraticAlgorithm = new BubbleSort();
     SortingAlgorithm<Integer> nlognAlgorithm = new QuickSort();
