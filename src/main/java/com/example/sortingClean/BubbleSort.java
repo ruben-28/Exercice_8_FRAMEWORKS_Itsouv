@@ -1,4 +1,4 @@
-package sortingClean;
+package com.example.sortingClean;
 
 public class BubbleSort implements SortingAlgorithm {
     public void sort(Comparable[] array) {
