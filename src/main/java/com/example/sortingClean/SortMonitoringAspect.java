@@ -1,4 +1,4 @@
-package sortingClean;
+package com.example.sortingClean;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -34,7 +34,7 @@ public class SortMonitoringAspect {
         globalTime += duration;
     }
 
-    @After("execution(* sortingClean.AlgorithmRunner.runAlgorithms(..))")
+    @After("execution(* com.example.sortingClean.AlgorithmRunner.runAlgorithms(..))")
     public void afterAll() {
         System.out.println("Total time of running all sort functions was " + globalTime + " ms");
         System.out.println("In detail:");
