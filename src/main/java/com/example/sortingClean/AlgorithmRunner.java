@@ -1,4 +1,5 @@
 package com.example.sortingClean;
+
 import java.util.Random;
 
 // TODO: Add dependency injection and annotations to this file
@@ -7,6 +8,7 @@ public class AlgorithmRunner {
     SortingAlgorithm<Integer> nlognAlgorithm = new QuickSort();
     SortingAlgorithm<Integer> randomAlgorithm1 = makeRandomSortingAlgorithm();
     SortingAlgorithm<Integer> randomAlgorithm2 = makeRandomSortingAlgorithm();
+
     int numberOfElements = 10000;
     public void runAlgorithms(){
         Random rand = new Random();
@@ -25,6 +27,7 @@ public class AlgorithmRunner {
         randomAlgorithm2.sort(intsClone);
     }
 
+
     private static SortingAlgorithm<Integer> makeRandomSortingAlgorithm(){
         Random random = new Random(System.currentTimeMillis());
         SortingAlgorithm<Integer> sortAlg= null;
@@ -39,4 +42,5 @@ public class AlgorithmRunner {
         }
         return sortAlg;
     }
+
 }
